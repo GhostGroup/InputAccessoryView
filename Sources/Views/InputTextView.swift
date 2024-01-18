@@ -127,17 +127,17 @@ open class InputTextView: UITextView {
         }
     }
     
-    open override var scrollIndicatorInsets: UIEdgeInsets {
-        didSet {
-            // When .zero a rendering issue can occur
-            if scrollIndicatorInsets == .zero {
-                scrollIndicatorInsets = UIEdgeInsets(top: .leastNonzeroMagnitude,
-                                                     left: .leastNonzeroMagnitude,
-                                                     bottom: .leastNonzeroMagnitude,
-                                                     right: .leastNonzeroMagnitude)
-            }
-        }
-    }
+//    open override var scrollIndicatorInsets: UIEdgeInsets {
+//        didSet {
+//            // When .zero a rendering issue can occur
+//            if scrollIndicatorInsets == .zero {
+//                scrollIndicatorInsets = UIEdgeInsets(top: .leastNonzeroMagnitude,
+//                                                     left: .leastNonzeroMagnitude,
+//                                                     bottom: .leastNonzeroMagnitude,
+//                                                     right: .leastNonzeroMagnitude)
+//            }
+//        }
+//    }
     
     /// A weak reference to the InputBarAccessoryView that the InputTextView is contained within
     open weak var inputBarAccessoryView: InputBarAccessoryView?
@@ -201,10 +201,6 @@ open class InputTextView: UITextView {
     /// Adds a notification for .UITextViewTextDidChange to detect when the placeholderLabel
     /// should be hidden or shown
     private func setupObservers() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputTextView.redrawTextAttachments),
-                                               name: UIDevice.orientationDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(InputTextView.textViewTextDidChange),
                                                name: UITextView.textDidChangeNotification, object: nil)
