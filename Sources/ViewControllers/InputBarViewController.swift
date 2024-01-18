@@ -46,10 +46,6 @@ open class InputBarViewController: UIViewController, InputBarAccessoryViewDelega
         }
     }
 
-    open override var inputAccessoryView: UIView? {
-        return isInputBarHidden ? nil : inputBar
-    }
-
     open override var canBecomeFirstResponder: Bool {
         return !isInputBarHidden
     }
@@ -84,5 +80,12 @@ open class InputBarViewController: UIViewController, InputBarAccessoryViewDelega
     open func inputBar(_ inputBar: InputBarAccessoryView, didChangeIntrinsicContentTo size: CGSize) { }
 
     open func inputBar(_ inputBar: InputBarAccessoryView, didSwipeTextViewWith gesture: UISwipeGestureRecognizer) { }
+}
+
+@available(visionOS, unavailable)
+extension InputBarViewController {
+    open override var inputAccessoryView: UIView? {
+        return isInputBarHidden ? nil : inputBar
+    }
 }
 
