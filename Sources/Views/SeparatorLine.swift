@@ -75,12 +75,20 @@ open class SeparatorLine: UIView {
     }
 }
 
-fileprivate struct Screen {
+internal struct Screen {
     static var scale: CGFloat {
 #if !os(visionOS)
         return UIScreen.main.scale
 #else
         return 1
+#endif
+    }
+    
+    static var bounds: CGRect {
+#if !os(visionOS)
+        return UIScreen.main.bounds
+#else
+        return CGRect(x: 0, y: 0, width: 360, height: 500)
 #endif
     }
 }

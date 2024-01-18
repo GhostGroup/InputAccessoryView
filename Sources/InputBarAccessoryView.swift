@@ -611,9 +611,9 @@ open class InputBarAccessoryView: UIView {
     /// - Returns: Max Height
     open func calculateMaxTextViewHeight() -> CGFloat {
         if traitCollection.verticalSizeClass == .regular {
-            return (UIScreen.main.bounds.height / 3).rounded(.down)
+            return (Screen.bounds.height / 3).rounded(.down)
         }
-        return (UIScreen.main.bounds.height / 5).rounded(.down)
+        return (Screen.bounds.height / 5).rounded(.down)
     }
     
     // MARK: - Layout Helper Methods
