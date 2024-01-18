@@ -70,7 +70,9 @@ class CommonTableViewController: UIViewController, UITableViewDataSource, UITabl
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.keyboardDismissMode = .interactive
+        if @available(iOS 15.0) {
+            tableView.keyboardDismissMode = .interactive
+        }
         tableView.register(ConversationCell.self, forCellReuseIdentifier: "\(ConversationCell.self)")
         tableView.tableFooterView = UIView()
         tableView.translatesAutoresizingMaskIntoConstraints = false

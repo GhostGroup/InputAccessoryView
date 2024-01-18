@@ -203,7 +203,9 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     @discardableResult
     open func bind(to scrollView: UIScrollView) -> Self {
         self.scrollView = scrollView
-        self.scrollView?.keyboardDismissMode = .interactive // allows dismissing keyboard interactively
+        if #available(iOS 15.0, *) {
+            self.scrollView?.keyboardDismissMode = .interactive // allows dismissing keyboard interactively
+        }
         let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureRecognizer))
         recognizer.delegate = self
         self.panGesture = recognizer
@@ -326,7 +328,11 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
 
     /// Only receive a `UITouch` event when the `scrollView`'s keyboard dismiss mode is interactive
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return scrollView?.keyboardDismissMode == .interactive
+        if #available(iOS 15.0, *) {
+            return scrollView?.keyboardDismissMode == .interactive
+        } else {
+            return false
+        }
     }
 
     /// Only recognice simultaneous gestures when its the `panGesture`
