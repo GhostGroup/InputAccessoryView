@@ -38,11 +38,7 @@ open class AttachmentCell: UICollectionViewCell {
     public let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 13, *) {
-            view.backgroundColor = .systemGray6
-        } else {
-            view.backgroundColor = .groupTableViewBackground
-        }
+        view.backgroundColor = .systemGroupedBackground
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -57,17 +53,13 @@ open class AttachmentCell: UICollectionViewCell {
     open lazy var deleteButton: UIButton = { [weak self] in
         let button = UIButton()
         let textColor: UIColor
-        if #available(iOS 13, *) {
-            textColor = .systemBackground
-        } else {
-            textColor = .white
-        }
+        textColor = .systemBackground
         button.setAttributedTitle(NSMutableAttributedString().bold("X", fontSize: 15, textColor: textColor), for: .normal)
         button.setAttributedTitle(NSMutableAttributedString().bold("X", fontSize: 15, textColor: textColor.withAlphaComponent(0.5)), for: .highlighted)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.backgroundColor = .systemBlue
-        button.addTarget(self, action: #selector(deleteAttachment), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self?.deleteAttachment), for: .touchUpInside)
         return button
     }()
     

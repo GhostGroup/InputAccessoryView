@@ -291,7 +291,8 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
             var keyboardNotification = cachedNotification,
             case .changed = recognizer.state,
             let view = recognizer.view,
-            let window = UIApplication.shared.windows.first
+            let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }),
+            let window = (scene as? UIWindowScene)?.keyWindow
         else { return }
 
         guard

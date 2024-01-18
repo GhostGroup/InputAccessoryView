@@ -181,7 +181,6 @@ open class InputBarButtonItem: UIButton, InputItem {
         } else {
             setTitleColor(.lightGray, for: .disabled)
         }
-        adjustsImageWhenHighlighted = false
         addTarget(self, action: #selector(InputBarButtonItem.touchUpInsideAction), for: .touchUpInside)
     }
     
