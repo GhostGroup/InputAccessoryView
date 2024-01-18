@@ -203,9 +203,9 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     @discardableResult
     open func bind(to scrollView: UIScrollView) -> Self {
         self.scrollView = scrollView
-        if #available(iOS 15.0, *) {
-            self.scrollView?.keyboardDismissMode = .interactive // allows dismissing keyboard interactively
-        }
+#if !os(visionOS)
+        self.scrollView?.keyboardDismissMode = .interactive // allows dismissing keyboard interactively
+#endif
         let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGestureRecognizer))
         recognizer.delegate = self
         self.panGesture = recognizer
