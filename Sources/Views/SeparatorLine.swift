@@ -40,7 +40,7 @@ open class SeparatorLine: UIView {
     // MARK: - Properties
     
     /// The height of the line
-  open var height: CGFloat = 1.0 / UIScreen.main.scale {
+    open var height: CGFloat = 1.0 / Screen.scale {
         didSet {
             constraints.filter { $0.identifier == "height" }.forEach { $0.constant = height } // Assumes constraint was given an identifier
             invalidateIntrinsicContentSize()
@@ -72,5 +72,14 @@ open class SeparatorLine: UIView {
         }
         translatesAutoresizingMaskIntoConstraints = false
         setContentHuggingPriority(.defaultHigh, for: .vertical)
+    }
+}
+
+fileprivate struct Screen {
+    static var scale: CGFloat {
+        if #available(iOS 15.0, *) {
+            return UIScreen.main.scale
+        }
+        return 1.0
     }
 }

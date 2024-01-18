@@ -82,10 +82,10 @@ open class InputBarViewController: UIViewController, InputBarAccessoryViewDelega
     open func inputBar(_ inputBar: InputBarAccessoryView, didSwipeTextViewWith gesture: UISwipeGestureRecognizer) { }
 }
 
-@available(iOS, unavailable)
-extension InputBarViewController {
-    open override var inputAccessoryView: UIView? {
-        return isInputBarHidden ? nil : inputBar
-    }
-}
+//@available(macCatalyst 15.0, iOS 15.0, tvOS 9.0, *)
+//extension InputBarViewController {
+//    open override var inputAccessoryView: UIView? {
+//        return isInputBarHidden ? nil : inputBar
+//    }
+//}
 
