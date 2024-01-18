@@ -77,9 +77,10 @@ open class SeparatorLine: UIView {
 
 fileprivate struct Screen {
     static var scale: CGFloat {
-        if #available(iOS 15.0, *) {
-            return UIScreen.main.scale
-        }
-        return 1.0
+#if !os(visionOS)
+        return UIScreen.main.scale
+#else
+        return 1
+#endif
     }
 }
